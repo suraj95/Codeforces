@@ -1,4 +1,4 @@
-# Before an Exam
+# Problem: "Before an Exam"
 
 # Input
 # 1st line= d: days, sumTime: hours studied
@@ -54,7 +54,7 @@ for item in days:
 if minTotal<=sumTime<=maxTotal:
 	print("YES")
 
-	# Greedy solution
+	# Greedy Solution
 
 	output_days=[]
 	hoursLeft=sumTime
