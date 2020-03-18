@@ -13,13 +13,6 @@ from collections import defaultdict
 def default():
 	return 0
 
-def sum(myDict):
-
-	sum=0
-	for i in myDict:
-		sum+=myDict[i]
-	return sum
-
 # variables
 
 num_of_names=0
