@@ -29,6 +29,7 @@ typedef unsigned long long int ull;
 #define N 5010
 #define inf 100000000
 
+/*
 #define sf(n) scanf("%d", &n)
 #define sff(n,m) scanf("%d%d",&n,&m)
 #define sfl(n) scanf("%I64d", &n)
@@ -39,6 +40,7 @@ typedef unsigned long long int ull;
 #define pffl(n,m) printf("%I64d %I64d\n",n,m)
 #define pfl(n) printf("%I64d",n)
 #define pfs(s) printf("%s",s)
+*/
 
 #define pb push_back
 #define pp pair<int,int>
@@ -70,22 +72,27 @@ int parent[N];
 
 int main()
 {
-	freopen("input.txt", "r", stdin);
+	/* freopen("input.txt", "r", stdin); */
 	
   	int i, j, k;
 	int n, m;
 
-	sf(n); sff(w, h);
+	/* sf(n); sff(w, h); */
+
+	cin>>n>>w>>h;
 
 	for (i = 1; i <= n; i++)
 	{
-		sff(j, k);
+		/* sff(j, k); */
+
+		cin>>j>>k;
 		if (j > w && k > h)
 			vec.pb(env(j, k, i));
 	}
 
 	if (vec.size() == 0) {
-		pfs("0\n");
+		/* pfs("0\n"); */
+		cout<<"0"<<endl;
 		return 0;
 	}
 
@@ -124,7 +131,9 @@ int main()
 	}
 
 	//so the chain ends in kth envelop
-	pf(mx); pfs("\n");
+
+	cout<<mx<<endl;
+	/* pf(mx); pfs("\n"); */
 
 	vector<int> ans; ans.pb(vec[k].idx);
 	while (1)
@@ -137,7 +146,8 @@ int main()
 
 	reverse(ans.begin(), ans.end());
 	for (int e : ans)
-		pf(e);
+		cout<<e<<endl;
+	/*	pf(e); */
 
 	return 0;
 }
