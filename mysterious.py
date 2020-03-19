@@ -11,8 +11,6 @@
 
 import sys
 
-# Variables
-
 n=0 # number of envelopes
 w=0	# card width
 h=0	# card height
@@ -53,7 +51,7 @@ else:
 	# now sort the chain of envelopes
 	chain.sort()
 
-	# now we have to use Recursion or Dynamic programming check through every possible branch 
+	# now we have to use Dynamic programming check through every possible branch 
 	# to get the longest chain possible
 
 	n = len(chain)
