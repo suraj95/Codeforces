@@ -51,6 +51,7 @@ int parent[N];
 int main()
 {
 	ios_base::sync_with_stdio(0); // This speeds up the program
+	cin.tie(NULL);
 	
   	int i, j, k;
 	int n, m;
