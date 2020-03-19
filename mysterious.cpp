@@ -21,29 +21,7 @@
 #include<utility>
 #include<vector>
 
-typedef long long int ll;
-typedef unsigned long long int ull;
-
-#define dbg printf("in\n")
-#define nl printf("\n")
 #define N 5010
-#define inf 100000000
-
-/*
-#define sf(n) scanf("%d", &n)
-#define sff(n,m) scanf("%d%d",&n,&m)
-#define sfl(n) scanf("%I64d", &n)
-#define sffl(n,m) scanf("%I64d%I64d",&n,&m)
-
-#define pf(n) printf("%d ",n)
-#define pff(n,m) printf("%d %d\n",n,m)
-#define pffl(n,m) printf("%I64d %I64d\n",n,m)
-#define pfl(n) printf("%I64d",n)
-#define pfs(s) printf("%s",s)
-*/
-
-#define pb push_back
-#define pp pair<int,int>
 
 using namespace std;
 
@@ -72,26 +50,22 @@ int parent[N];
 
 int main()
 {
-	/* freopen("input.txt", "r", stdin); */
+	ios_base::sync_with_stdio(0); // This speeds up the program
 	
   	int i, j, k;
 	int n, m;
-
-	/* sf(n); sff(w, h); */
 
 	cin>>n>>w>>h;
 
 	for (i = 1; i <= n; i++)
 	{
-		/* sff(j, k); */
 
 		cin>>j>>k;
 		if (j > w && k > h)
-			vec.pb(env(j, k, i));
+			vec.push_back(env(j, k, i));
 	}
 
 	if (vec.size() == 0) {
-		/* pfs("0\n"); */
 		cout<<"0"<<endl;
 		return 0;
 	}
@@ -100,7 +74,6 @@ int main()
 
 	n = vec.size();
 
-	//state: if the chain ends in ith envelop
 	memset(dp, 0, sizeof(dp));
 	memset(parent, -1, sizeof(parent));
 
@@ -109,7 +82,6 @@ int main()
 	{
 		for (j = i - 1; j >= 0; j--)
 		{
-			//jth could be taken
 			if (vec[j].w < vec[i].w && vec[j].h < vec[i].h)
 			{
 				if (1 + dp[j] > dp[i])
@@ -130,24 +102,21 @@ int main()
 			mx = dp[i], k = i;
 	}
 
-	//so the chain ends in kth envelop
 
 	cout<<mx<<endl;
-	/* pf(mx); pfs("\n"); */
 
-	vector<int> ans; ans.pb(vec[k].idx);
+	vector<int> ans; ans.push_back(vec[k].idx);
 	while (1)
 	{
 		k = parent[k];
 		if (k == -1)break;
 
-		ans.pb(vec[k].idx);
+		ans.push_back(vec[k].idx);
 	}
 
 	reverse(ans.begin(), ans.end());
 	for (int e : ans)
 		cout<<e<<endl;
-	/*	pf(e); */
 
 	return 0;
 }
