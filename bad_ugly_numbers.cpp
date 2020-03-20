@@ -36,7 +36,7 @@ using namespace std;
 
 vector<int> numbers;
 
-bool check_zero(int number)
+bool check_zero(long long int number)
 {
 
 	int zero_flag=0;
@@ -58,7 +58,7 @@ bool check_zero(int number)
 	return false;
 }
 
-bool check_digits(int number){
+bool check_digits(long long int number){
 
 
 	int s=number;
@@ -78,7 +78,7 @@ bool check_digits(int number){
 }
 
 
-int generate_number(int digits)
+long long int generate_number(int digits)
 {
 	// 1 <= digits <= 10^5
 	if(digits==1 || digits>100000 || digits<0){
@@ -86,11 +86,14 @@ int generate_number(int digits)
 	}
 	else{
 
-		int lower_limit, upper_limit;
-		int hit=-1; 
+		long long int lower_limit, upper_limit;
+		long long int hit=-1; 
 
 		lower_limit=pow(10,digits-1);
 		upper_limit=pow(10,digits);
+
+		cout<<digits<<"\n";
+		cout<<lower_limit<<" "<<upper_limit<<"\n";
 
 		for(int i=lower_limit; i<upper_limit; i++)
 		{
