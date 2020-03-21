@@ -1,12 +1,9 @@
 /*
-
 For each test case, print an integer 𝑠 which satisfies the conditions described:
-
 1. s>0,
 2. s consists of n digits,
 3. no digit in s equals 0,
 4. s is not divisible by any of it's digits.
-
 */
 
 #define _CRT_SECURE_NO_WARNINGS
@@ -92,9 +89,6 @@ long long int generate_number(int digits)
 		lower_limit=pow(10,digits-1);
 		upper_limit=pow(10,digits);
 
-		cout<<digits<<"\n";
-		cout<<lower_limit<<" "<<upper_limit<<"\n";
-
 		for(int i=lower_limit; i<upper_limit; i++)
 		{
 			// check if zero is in the numbers
@@ -112,7 +106,7 @@ long long int generate_number(int digits)
 
 int main()
 {
-	ios_base::sync_with_stdio(0);
+	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
 	int num_test_cases; 
 
