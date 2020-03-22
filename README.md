@@ -18,7 +18,7 @@ It is very possible for O(N) code to run faster than 0(1) code for specific inpu
 
 Most interviewers won't ask about specific algorithms for binary tree balancing or other complex algorithms. Frankly, being several years out of school, they probably don't remember these algorithms either. You're usually only expected to know the basics. Here's a list of the absolute, must-have knowledge— 
 
-![alt text](./images/Data_Structures.tiff)
+![alt text](./images/data_structures.png)
 
 Practicing implementing the data structures and algorithm (on paper, and then on a computer) is also a great exercise. It will help you learn how the internals of the data structures work, which is important for many interviews.
 
