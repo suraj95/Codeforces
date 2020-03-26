@@ -1,0 +1,26 @@
+# R Files
+
+.Rhistory
+
+#Unused .cpp files
+
+divisible.cpp
+
+# Text Files
+
+in2.txt
+
+# Executables
+
+*.exe
+*.out
+*.app
+
+# Executables without a specific extension
+
+divisible
+ugly
+optimized
+maximums
+mysterious
+mysterious_optimized
