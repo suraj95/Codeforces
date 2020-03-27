@@ -30,15 +30,41 @@ contain n−2 letters 'a' and two letters 'b' in lexicographical (alphabetical) 
 
 using namespace std;
 
-int main(){
 
-	int num_test_cases;
+string generate_permutation(int n, int k){
 
 	string a="a";
 	string b="b";
-	string c;
+	string c="";
 
-	std::vector<string> vec;
+	// this loop generates the 1st string that satisfies 
+	// the conditon n-2 letters 'a' and 1 letter 'b'
+
+	//int num_permutations=(n*(n-1))/2
+
+	for(int i=0;i<n;i++){
+
+		if(i<n-2){
+			c+=a;
+		}
+
+		else{
+			c+=b;
+		}
+	}
+
+	return c;
+
+}
+
+
+int main(){
+
+	ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+
+	int num_test_cases;
+
+	vector<string> vec;
 
 	cin>>num_test_cases;
 
@@ -46,25 +72,11 @@ int main(){
 
 		int n,k;  // 3<=n<=10^5  and 1<=k<=min(2,10^9,n*(n-1)/2)
 
-		c=""; // initialize string
-
 		cin>>n>>k;
 
-		// this loop generates the 1st string that satisfies 
-		// the conditon n-2 letters 'a' and 1 letter 'b'
-		for(int i=0;i<n;i++){
+		string result=generate_permutation(n,k);
 
-			if(i<n-2){
-				c+=a;
-			}
-
-			else{
-				c+=b;
-			}
-
-		}
-
-		vec.push_back(c); // store in vector
+		vec.push_back(result); // store in vector
 
 	}
 
