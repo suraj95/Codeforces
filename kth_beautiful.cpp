@@ -29,12 +29,12 @@ contain n−2 letters 'a' and two letters 'b' in lexicographical (alphabetical) 
 using namespace std;
 
 
-void generate_permutation(int n, int k, char* c){
+void generate_permutation(unsigned long long int n, unsigned long long int k, char* c){
 
 	char a='a';
 	char b='b';
 
-	int num_permutations=(k*(k-1))/2;
+	unsigned long long int num_permutations=(k*(k-1))/2;
 
 	// this loop generates the 1st string that satisfies 
 	// the conditon n-2 letters 'a' and 2 letters 'b'
@@ -76,7 +76,7 @@ int main(){
 
 	for(int i=0;i<num_test_cases;i++){
 
-		int n,k;  // 3<=n<=10^5  and 1<=k<=min(2,10^9,n*(n-1)/2)
+		unsigned long long int n,k;  // 3<=n<=10^5  and 1<=k<=min(2,10^9,n*(n-1)/2)
 		char* c;  // create pointer
 
 		cin>>n>>k;
@@ -87,6 +87,8 @@ int main(){
 		string str(c,c+n);
 
 		vec.push_back(str); // store in vector
+
+		delete[] c; //deallocate the memory
 
 	}
 
