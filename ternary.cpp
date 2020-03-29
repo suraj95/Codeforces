@@ -77,6 +77,15 @@ numbers_pair generate_a_b(int digits, int* p, int* a, int* b){
 	int x,y;
 	numbers_pair result;
 
+	//  max(a,b) which is a should be as minimum as possible
+
+	// to minimize the max between the two, the difference between the digits 
+	// should be as minimum as possible so it can be utilized somewhere else
+
+	// also, we have to strictly enforce that a>b to make things easier
+
+	int order_enforced=0;
+
 	for(int j=0; j<digits; j++){
 
 			// digits will be {0,0}
@@ -88,19 +97,48 @@ numbers_pair generate_a_b(int digits, int* p, int* a, int* b){
 			// digits will be {2,0} or {1,1}
 			else if(p[j]==2){
 
-				// assuming {1,1} for time being
-				a[j]=1;
-				b[j]=1;
+				// it will be {1,1} here to avoid leading zeros
+				if(j==0){
+					a[j]=1;
+					b[j]=1;
+				}
+				// order has been enforced, so now we can minimize a
+				else if(order_enforced){
+					a[j]=0;
+					b[j]=2;
+				}
+				// order has not been enforced, so keep pitting a against b to minimize max(a,b)
+				else{
+					a[j]=1;
+					b[j]=1;
+				}
+
+				/* 
+
+				{2,0} condition will never arrive because max(a,b) has to be 
+				minimum which will always be {1,1}
+
+				*/
+
 			}
 
 			// digits will be {1,0}
 			else if(p[j]==1)
 			{
-				a[j]=1;
-				b[j]=0;
-			}
+				// order has been enforced, so now we can minimize a	
+				if(order_enforced){
+					a[j]=0;
+					b[j]=1;
+				}
 
-			// cout<<p[j]<<"\n";
+				// order has not been enforced, so we enforce order now
+				else{
+					a[j]=1;
+					b[j]=0;
+					order_enforced=1;
+				}
+
+			}
 		}
 
 		x=create_number(digits,a);
