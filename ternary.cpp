@@ -1,4 +1,5 @@
-/* A Ternary XOR operation is defined as as a number c=a⊙b of length n, where ci=(ai+bi)%3.  
+/* 
+A Ternary XOR operation is defined as as a number c=a⊙b of length n, where ci=(ai+bi)%3.  
 For example, 10222⊙11021=21210.
 
 So for a given x, our task is to find such ternary numbers a and b both of length n and both without 
@@ -45,10 +46,20 @@ struct numbers_pair
 
 void split_digits(int num, int digits, int* ptr){
 
-	int units, divider;
+	int units=0, divider=1;
 	
-	divider=1;
 	for(int i=digits-1;i>=0;i--){
+
+		/* 
+
+		The remainder operator (otherwise known as the modulo operator) % is a binary operator 
+		(i.e., takes exactly 2 operands) and operates only on integer types like 
+		short, int, long, long long, etc.
+
+		Casting the operands to int. But you will risk losing data. This might be hard, so I 
+		will come back here later
+
+		*/
 
 		units=(num/divider)%10;
 		ptr[i]=units;
@@ -151,12 +162,26 @@ numbers_pair generate_a_b(int digits, int* p, int* a, int* b){
 
 int main(){
 
+	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+
 	int num_test_cases;
 	cin>>num_test_cases;
 
 	for(int i =0; i<num_test_cases; i++){
 
-		int digits, x;
+		int digits;
+
+		/* 
+
+		unsigned long long will store exact integers whereas double stores 
+		a mantissa (with limited 52-bit precision) and an exponent. 
+
+		This allows double to store very large numbers (around 10308) but not exactly. 
+		An unsigned long long only has 19 digits, but every single of them is exactly defined.
+		
+		*/
+
+		int x;
 
 		// create pointer to an integer
 		int* p; 
@@ -172,7 +197,6 @@ int main(){
 		p=new int[digits];
 		a=new int[digits];
 		b=new int[digits];
-
 
 		split_digits(x,digits,p);
 
