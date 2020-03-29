@@ -56,9 +56,9 @@ void split_digits(int num, int digits, int* ptr){
 		(i.e., takes exactly 2 operands) and operates only on integer types like 
 		short, int, long, long long, etc.
 
-		Casting the operands to int. But you will risk losing data. This might be hard, so I 
-		will come back here later
-
+		Casting the operands to int might work. But I will risk losing some data. This might be hard, 
+		so I will come back here later
+		
 		*/
 
 		units=(num/divider)%10;
@@ -178,7 +178,7 @@ int main(){
 
 		This allows double to store very large numbers (around 10308) but not exactly. 
 		An unsigned long long only has 19 digits, but every single of them is exactly defined.
-		
+
 		*/
 
 		int x;

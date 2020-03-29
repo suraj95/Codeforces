@@ -50,8 +50,7 @@ int parent[N];
 
 int main()
 {
-	ios_base::sync_with_stdio(0); // This speeds up the program
-	cin.tie(NULL);
+	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 	
   	int i, j, k;
 	int n, m;
