@@ -26,8 +26,6 @@ contain n−2 letters 'a' and two letters 'b' in lexicographical (alphabetical) 
 
 #define N 5010
 
-using namespace std;
-
 
 void generate_permutation(unsigned long long int n, unsigned long long int k, char* c){
 
@@ -57,34 +55,34 @@ void generate_permutation(unsigned long long int n, unsigned long long int k, ch
 			break;
 		}
 
-	}while(next_permutation(c,c+n));
+	}while(std::next_permutation(c,c+n));
 
 }
 
 
 int main(){
 
-	ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+	std::ios_base::sync_with_stdio(false); std::cin.tie(0); std::cout.tie(0);
 
 	// Dynamically allocating arrays is required when your dimensions are given at runtime
 	// std::vector is already a wrapper around this process
 
 	int num_test_cases;
-	vector<string> vec;
+	std::vector<std::string> vec;
 
-	cin>>num_test_cases;
+	std::cin>>num_test_cases;
 
 	for(int i=0;i<num_test_cases;i++){
 
 		unsigned long long int n,k;  // 3<=n<=10^5  and 1<=k<=min(2,10^9,n*(n-1)/2)
 		char* c;  // create pointer
 
-		cin>>n>>k;
+		std::cin>>n>>k;
 
 		c=new char[n];   // allocate a block of memory to c
 		generate_permutation(n,k,c);
 
-		string str(c,c+n);
+		std::string str(c,c+n);
 
 		vec.push_back(str); // store in vector
 
@@ -92,8 +90,8 @@ int main(){
 
 	}
 
-	for (string s : vec){
-		cout<<s<<"\n";
+	for (std::string s : vec){
+		std::cout<<s<<"\n";
 	}
 
 	return 0;
