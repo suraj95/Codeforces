@@ -1,167 +1,89 @@
+/* 
 
-/*
+Author: Mike Mirzayanov
 
-The round carousel consists of n figures of animals. Figures are numbered from 1 to n in order of the 
-carousel moving. Thus, after the n-th figure the figure with the number 1 follows. Each figure has 
-its own type — the type of the animal corresponding to this figure (the horse, the tiger and so on). 
-The type of animal of the i-th figure equals ti.
+Link: https://codeforces.com/blog/entry/75246
 
-Our task is to color the figures in such a way that the number of distinct colors used is the minimum 
-possible and there are no figures of the different types going one right after another and colored in 
-the same color. If you use exactly k distinct colors, then the colors of figures should be denoted with 
-integers from 1 to k.
+The answer to this problem is at most 3. Let's prove it by construction.
+
+Firstly, if all ti are equal then the answer is 1. Otherwise, there are at least two different values 
+in the array 𝑡 so the answer is at least 2. If 𝑛 is even then the answer is always 2 because you can 
+color figures in the following way: [1,2,1,2,…,1,2]. If 𝑛 is odd then consider two cases. The first 
+case is when some pair of adjacent figures have the same type. Then the answer is 2 because you can 
+merge these two values into one and get the case of even 𝑛. Otherwise, all pairs of adjacent figures have 
+different types and if you consider this cyclic array as a graph (cycle of length 𝑛) then you can notice 
+that it isn't bipartite so you need at least 3 colors to achieve the answer (color all vertices in such a 
+way that any two adjacent vertices have different colors). And the answer looks like [1,2,1,2,…,1,2,3].
 
 */
 
-
-#define _CRT_SECURE_NO_WARNINGS
-
-#include<algorithm>
-#include<cctype>
-#include<cmath>
-#include<cstdio>
-#include<cstdlib>
-#include<cstring>
-#include<functional>
-#include<iomanip>
-#include<iostream>
-#include<list>
-#include<map>
-#include<numeric>
-#include<queue>
-#include<set>
-#include<stack>
-#include<string>
-#include<utility>
-#include<vector>
+#include <bits/stdc++.h>
 
 using namespace std;
 
-
-/*
-
-There should be no consecutive animals of different types but same color.
-So we basically have to use a greedy algorithm to minimize the number of colors.
-
-*/
-
-std::vector<int> generate_colors(std::vector<int> animals){
-
-	std::vector<int> colors;
-	int color_count=0;
-
-
-	int prev_color=-1;  //previous color 
-	int prev_animal=-1; //previous animal
-
-	//A good use of auto is to avoid long initializations for iterators
-	for(auto it=animals.begin(); it!=animals.end();it++){
-
-		// first animal in carousel
-		if(prev_animal==-1){
-			colors.push_back(1);
-			prev_animal=*it;
-			prev_color=1;
-
-			color_count++;
-		}
-
-		else{
-			int current_color=-1;
-
-			// previous animal and current animal are same
-			if(prev_animal==*it){
-
-				// check if we can use an older color instead of adding a new color
-				if(color_count>1){
-
-					// choose the first color that is different from previous color
-					for(int i=1;i<=color_count;i++){
-						if(i!=prev_color){
-							current_color=i;
-							break;
-						}
-					}
-				}
-
-				else{
-					current_color=++color_count;
-				}
-
-				// add the color
-				colors.push_back(current_color);
-
-				// update previous animal
-				prev_animal=*it;
-
-				// update previous color
-				prev_color=current_color;
-			}
-
-			//previous animal and current animal are different
-			else{
-
-				// check if we can use an older color instead of adding a new color
-				if(color_count>1){
-
-					// choose the first color that is different from previous color
-					for(int i=1;i<=color_count;i++){
-						if(i!=prev_color){
-							current_color=i;
-							break;
-						}
-					}
-				}
-
-				// there is only one color
-				else{
-					// increment the color count
-					current_color=++color_count;
-				}
-
-				// add the color
-				colors.push_back(current_color);
-
-				// update previous animal
-				prev_animal=*it;
-
-				// update previous color
-				prev_color=current_color;
-			}
-		}
-
+int solve() {
+	int n;
+	cin >> n;
+	vector<int> a(n);
+	for (int i = 0; i < n; ++i) {
+		cin >> a[i];
 	}
-
-	return colors;
-
+	
+	if (count(a.begin(), a.end(), a[0]) == n) {
+		cout << 1 << endl;
+		for (int i = 0; i < n; ++i) {
+			cout << 1 << " ";
+		}
+		cout << endl;
+		return 0;
+	}
+	
+	if (n % 2 == 0) {
+		cout << 2 << endl;
+		for (int i = 0; i < n; ++i) {
+			cout << i % 2 + 1 << " ";
+		}
+		cout << endl;
+		return 0;
+	}
+	
+	for (int i = 0; i < n; ++i) {
+		if (a[i] == a[(i + 1) % n]) {
+			vector<int> ans(n);
+			for (int j = 0, pos = i + 1; pos < n; ++pos, j ^= 1) {
+				ans[pos] = j + 1;
+			}
+			for (int j = 0, pos = i; pos >= 0; --pos, j ^= 1) {
+				ans[pos] = j + 1;
+			}
+			cout << 2 << endl;
+			for (int pos = 0; pos < n; ++pos) {
+				cout << ans[pos] << " ";
+			}
+			cout << endl;
+			return 0;
+		}
+	}
+	
+	cout << 3 << endl;
+	for (int i = 0; i < n - 1; ++i) {
+		cout << i % 2 + 1 << " ";
+	}
+	cout << 3 << endl;
+    return 0;    
 }
 
-int main(){
+int main() {
+#ifdef _DEBUG
+	freopen("input.txt", "r", stdin);
+//	freopen("output.txt", "w", stdout);
+#endif
 
-	int num_test_cases;
-	cin>>num_test_cases;
-
-	for(int i=0; i<num_test_cases; i++){
-
-		int num_figures;
-		std::vector<int> animal_vec;
-		std::vector<int> color_vec;
-
-		cin>>num_figures;
-
-		for(int j=0; j<num_figures; j++){
-			int temp;
-			cin>>temp;
-
-			animal_vec.push_back(temp);
-		}
-
-		color_vec=generate_colors(animal_vec);
-
-		// Print the numbers
-		for (int n: color_vec)
-			cout<<n<<"\n";
-	}
+int q;
+cin >> q;
+for (int qq = 0; qq < q; qq++) {
+    solve();
+}
 
 	return 0;
 }
