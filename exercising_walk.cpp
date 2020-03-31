@@ -99,7 +99,7 @@ int main(){
 	cin>>num_test_cases;
 
 	for(unsigned short int i=0; i<num_test_cases; i++){
-		int a, b, c, d;
+		long long int a, b, c, d;
 		long long int x, y, x1, y1, x2, y2;
 
 		cin>>a>>b>>c>>d;
