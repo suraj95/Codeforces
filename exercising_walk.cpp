@@ -44,50 +44,50 @@ struct position
 
 struct moves
 {
-	long long int a,b,c,d;
+	unsigned long long int a,b,c,d;
 
 	moves() {}
-	moves(long long int a, long long int b, long long int c, long long int d) {
-		this->a = a;
-		this->b = b;
-		this->c = c;
-		this->d = d;
+	moves(unsigned long long int a, unsigned long long int b, unsigned long long int c, unsigned long long int d) {
+		this->a = a; // left
+		this->b = b; // right
+		this->c = c; // down
+		this->d = d; // up
 	}
 };
 
 
 bool check_moves(position start, position upper_limit, position lower_limit, moves mv){
 
-	unsigned long long int total_moves=mv.a+mv.b+mv.c+mv.d;
+	// unsigned long long int right_length=(upper_limit.x-start.x);
+	// unsigned long long int left_length=(start.x-lower_limit.x);
+	// unsigned long long int up_breadth=(upper_limit.y-start.y);
+	// unsigned long long int down_breadth=(start.y-lower_limit.y);
 
-	unsigned long long int length=(upper_limit.x-start.x)+(start.x-lower_limit.x);
-	unsigned long long int breadth=(upper_limit.y-start.y)+(start.y-lower_limit.y);
+	unsigned long long int total_length=(upper_limit.x-start.x)+(start.x-lower_limit.x);
+	unsigned long long int total_breadth=(upper_limit.y-start.y)+(start.y-lower_limit.y);
 
-	unsigned long long int perimeter=length+breadth;
-	unsigned long long int area=length*breadth;
+	unsigned long long int net_movement_x=abs(long(long(int(mv.b-mv.a))));
+	unsigned long long int net_movement_y=abs(long(long(int(mv.d-mv.c))));
 
-	if(length==0 || breadth==0){
+	// cat should always be in the area [x1,x2]×[y1,y2] 
+	// so x1≤u≤x2 and y1≤v≤y2 should always be true
 
-		//check if the moves are less than perimeter of rectangle if 2D
-		if(total_moves<=perimeter){
-			return true;
-		}
-		else{
-			return false;
-		}
+	// but we have to find if only one such move exists
+
+	// there is no acceptable range
+	if(total_length==0 && total_breadth==0){
+		return false;
 	}
 
-	else{
+	//total movement is in acceptable range, so there could be one such move
+ 	if(net_movement_x<=total_length && net_movement_y<=total_breadth){
+ 		return true;
+ 	}
 
-		// check if the moves are less than area of rectangle if 3D
-		if(total_moves<=area){
-			return true;
-		}
-
-		else{
-			return false;
-		}
-	}
+ 	// there is no such move
+ 	else{
+ 		return false;
+ 	}
 
 }
 
@@ -99,7 +99,7 @@ int main(){
 	cin>>num_test_cases;
 
 	for(unsigned short int i=0; i<num_test_cases; i++){
-		long long int a, b, c, d;
+		unsigned long long int a, b, c, d;
 		long long int x, y, x1, y1, x2, y2;
 
 		cin>>a>>b>>c>>d;
