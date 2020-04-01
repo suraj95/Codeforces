@@ -33,7 +33,7 @@ using namespace std;
 
 struct position
 {
-	int x,y;
+	long long int x,y;
 
 	position() {}
 	position(long long int x, long long int y) {
