@@ -14,7 +14,7 @@ The efficiency of algorithms are generally measured in Time Complexity and Space
 
 ![alt text](./images/big-o.png)
 
-It is very possible for O(N) code to run faster than 0(1) code for specific inputs. Big 0 just describes the rate of increase. For this reason, we drop the constants in runtime. An algorithm that one might have described as 0(2N) is actually O(N). And if it only goes through half of the array (in terms of iterations) does not impact the big 0 time. You should drop the non-dominant terms-— O(N^2 + N) becomes O(N^2). For example, the expression O(B^2+A) cannot be reduced without some special knowledge of A and B.
+It is very possible for O(N) code to run faster than O(1) code for specific inputs. Big O just describes the rate of increase. For this reason, we drop the constants in runtime. An algorithm that one might have described as O(2N) is actually O(N). And if it only goes through half of the array (in terms of iterations) does not impact the big O time. You should drop the non-dominant terms-— O(N^2 + N) becomes O(N^2). For example, the expression O(B^2+A) cannot be reduced without some special knowledge of A and B.
 
 Most interviewers won't ask about specific algorithms for binary tree balancing or other complex algorithms. Frankly, being several years out of school, they probably don't remember these algorithms either. You're usually only expected to know the basics. Here's a list of the absolute, must-have knowledge— 
 
