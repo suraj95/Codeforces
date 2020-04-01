@@ -37,8 +37,8 @@ struct position
 
 	position() {}
 	position(long long int x, long long int y) {
-		this->x = x;
-		this->y = y;
+		this->x = x; // x-coordinate
+		this->y = y; // y-coordinate
 	}
 };
 
@@ -58,11 +58,6 @@ struct moves
 
 bool check_moves(position start, position upper_limit, position lower_limit, moves mv){
 
-	// unsigned long long int right_length=(upper_limit.x-start.x);
-	// unsigned long long int left_length=(start.x-lower_limit.x);
-	// unsigned long long int up_breadth=(upper_limit.y-start.y);
-	// unsigned long long int down_breadth=(start.y-lower_limit.y);
-
 	unsigned long long int total_length=(upper_limit.x-start.x)+(start.x-lower_limit.x);
 	unsigned long long int total_breadth=(upper_limit.y-start.y)+(start.y-lower_limit.y);
 
@@ -72,19 +67,35 @@ bool check_moves(position start, position upper_limit, position lower_limit, mov
 	// cat should always be in the area [x1,x2]×[y1,y2] 
 	// so x1≤u≤x2 and y1≤v≤y2 should always be true
 
-	// but we have to find if only one such move exists
+	// but we only need to find if only one such move exists
 
-	// there is no acceptable range
+	// there is no x-axis or y-axis
+	// but it is guaranteed that a+b+c+d>=1
 	if(total_length==0 && total_breadth==0){
 		return false;
 	}
 
 	//total movement is in acceptable range, so there could be one such move
  	if(net_movement_x<=total_length && net_movement_y<=total_breadth){
+
+ 		// there is no x-axis, but there are left and right movements 
+ 		if(total_length==0){
+ 			if(mv.a!=0 && mv.b!=0){
+ 				return false;
+ 			}
+ 		}
+
+ 		// there is no y-axis, but there are up and down movements 
+ 		if(total_breadth==0){
+ 			if(mv.c!=0 && mv.d!=0){
+ 				return false;
+ 			}
+ 		}
+
  		return true;
  	}
 
- 	// there is no such move
+ 	// No move exists as as no movements are not in acceptable range
  	else{
  		return false;
  	}
