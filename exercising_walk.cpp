@@ -92,6 +92,19 @@ bool check_moves(position start, position upper_limit, position lower_limit, mov
  			}
  		}
 
+ 		long long int final_x=long(long(int(start.x+mv.b-mv.a)));
+ 		long long int final_y=long(long(int(start.y+mv.d-mv.c)));
+
+ 		// check if final_x position is outside acceptable range
+ 		if(upper_limit.x<final_x || final_x<lower_limit.x){
+ 			return false;
+ 		}
+
+ 		// check if final_y position is in acceptable range
+ 		if(upper_limit.y<final_y || final_y<lower_limit.y){
+ 			return false;
+ 		}
+
  		return true;
  	}
 
