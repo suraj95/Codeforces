@@ -20,5 +20,5 @@ Most interviewers won't ask about specific algorithms for binary tree balancing 
 
 ![alt text](./images/data_structures.png)
 
-Practicing implementing the data structures and algorithm (on paper, and then on a computer) is also a great exercise. It will help you learn how the internals of the data structures work, which is important for many interviews.
+Practicing implementing the data structures and algorithm (on paper, and then on a computer) is also a great exercise. It will help you learn how the internals of the data structures work, which is important for many interviews. For instance, Stacks are often used to parse and evaluate various forms of expression statements, for instance, in reverse polish Notation. Stacks are also used to provide backtracking features, like back button in your browser. Queues are good for order processing because it ensures that orders for a product are fulfilled in the order in that they were received by the system. Queues are also used in message processing, to make sure messages are sent in the order they are written. 
 
