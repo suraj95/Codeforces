@@ -16,7 +16,6 @@ Input:
 4 57
 20 40 60 80
 
-
 Output:
 
 5
@@ -50,14 +49,16 @@ Output:
 using namespace std;
 
 
-// 1 3 5 7 10
 int generate_v(set<int> rankings, int x){
 
     int counter=1;
+
+    // this loop continues till x is not zero,
+    // so it generates an extra increment if number is not in set
     while(x!=0){
         const bool is_in=rankings.find(counter) !=rankings.end();
 
-        // if number not in set
+        // if number not in set, then the extra games will be utilized
         if(!is_in){
             x--;
         }
@@ -65,7 +66,11 @@ int generate_v(set<int> rankings, int x){
         counter++;
     }
 
-    return counter;
+    if(rankings.count(counter)){
+        return counter;
+    }
+
+    return --counter;
 
 }
 
