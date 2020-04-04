@@ -51,7 +51,6 @@ Output:
 
 using namespace std;
 
-// use a greedy algorithm
 
 int highest_score(int num_students, std::vector<int> scores_vec, int max_score, int score_sum){
 
@@ -63,7 +62,8 @@ int highest_score(int num_students, std::vector<int> scores_vec, int max_score, 
 
 		Average is basically sum of scores divided by number of scores. As number of scores is 
 		fixed (no student will disappear), we will have to increase/decrease scores with a greedy 
-		algorithm such that the sum of the numbers is fixed and maximum number is not violated.
+		algorithm such that the sum of the numbers is fixed and the maximum score that 
+		cab be achieved is not violated.
 
 	*/
 
