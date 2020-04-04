@@ -54,38 +54,25 @@ using namespace std;
 
 int highest_score(int num_students, std::vector<int> scores_vec, int max_score, int score_sum){
 
-	int highest_score=-1;
+	int highest_score=-1; // initialized with -1
 
 	/*
-		Iterate through the vector, and for each element, try to extract maximum possible digits
-		from it such that the condition is satisfied.
-
 		Average is basically sum of scores divided by number of scores. As number of scores is 
 		fixed (no student will disappear), we will have to increase/decrease scores with a greedy 
 		algorithm such that the sum of the numbers is fixed and the maximum score that 
-		cab be achieved is not violated.
+		can be achieved is not violated. Since we have the total score, we don't even 
+		need to iterate the whole loop again
 
 	*/
 
-	for(int i=0; i<num_students; i++){
+	if(max_score<=score_sum){
+		highest_score=max_score;
+		score_sum-=max_score;
+	}
 
-
-		// first item will simply take the max_score if possible
-		if(i==0){
-
-			if(max_score<=score_sum){
-				highest_score=max_score;
-				score_sum-=max_score;
-				break;
-			}
-
-			else{
-				highest_score=score_sum;
-				score_sum-=score_sum;
-				break;
-			}
-		}
-
+	else{
+		highest_score=score_sum;
+		score_sum-=score_sum;
 	}
 
 	return highest_score;
