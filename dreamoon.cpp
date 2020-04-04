@@ -53,8 +53,6 @@ int generate_v(set<int> rankings, int x){
 
     int counter=1;
 
-    // this loop continues till x is not zero,
-    // so it generates an extra increment if number is not in set
     while(true){
         const bool is_in=rankings.find(counter) !=rankings.end();
 
@@ -68,6 +66,8 @@ int generate_v(set<int> rankings, int x){
 
         counter++;
     }
+
+    // this loop may generates an extra increment if last number is not in set
 
     if(rankings.count(counter)){
         return counter;
