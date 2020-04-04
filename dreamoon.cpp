@@ -55,12 +55,15 @@ int generate_v(set<int> rankings, int x){
 
     // this loop continues till x is not zero,
     // so it generates an extra increment if number is not in set
-    while(x!=0){
+    while(true){
         const bool is_in=rankings.find(counter) !=rankings.end();
 
         // if number not in set, then the extra games will be utilized
         if(!is_in){
-            x--;
+        	if(x==0){
+        		break;
+        	}
+        	x--;
         }
 
         counter++;
@@ -85,6 +88,7 @@ set<int> remove_duplicates(priority_queue<int, vector<int>, greater<int> > gq)
     {
 
         int item=g.top();
+
         rankings_set.insert(item);
 
         g.pop();
