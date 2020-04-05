@@ -1,6 +1,6 @@
 /*
 
-VK news recommendation system daily selects interesting publications of one of n disjoint categories 
+A news recommendation system daily selects interesting publications of one of n disjoint categories 
 for each user. Each publication belongs to exactly one category. For each category 𝑖 batch algorithm selects 
 ai publications.
 
@@ -33,10 +33,11 @@ Output:
 
 Note- For the first test case, the answer is actually listed as 6 as that will add 3 new publications to 
 the second publication, making its count 10. But I believe it is incorrect because it doesn't take into 
-consideration the fact that other numbers will increase too, and at t=6, the distribution becomes 
-[3,10,10,7,9]
+consideration the fact that other numbers will increase too. So at t=6, the distribution becomes 
+[3,10,10,7,9].
 
-8 is the smallest possible time period we can add where we get a unique distribution of [4,11,10,8,9]
+But at t=8 is the smallest possible time period we can add where we get a unique distribution of 
+[4,11,10,8,9].
 
 */
 
@@ -96,7 +97,6 @@ int minimal_time(int categories, std::vector<int> magazines, std::vector<int> ti
 				int new_publications=extra_time/time[i];
 				temp_vec.push_back(magazines[i]+new_publications);
 			}
-
 
 			// break the loop the moment we get a unique distribution
 			if(isUnique(temp_vec)){
