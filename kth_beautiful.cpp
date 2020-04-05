@@ -24,7 +24,7 @@ contain n−2 letters 'a' and two letters 'b' in lexicographical (alphabetical) 
 #include<utility>
 #include<vector>
 
-#define N 5010
+using namespace std;
 
 
 void generate_permutation(unsigned long long int n, unsigned long long int k, char* c){
@@ -70,19 +70,19 @@ int main(){
 	int num_test_cases;
 	std::vector<std::string> vec;
 
-	std::cin>>num_test_cases;
+	cin>>num_test_cases;
 
 	for(int i=0;i<num_test_cases;i++){
 
 		unsigned long long int n,k;  // 3<=n<=10^5  and 1<=k<=min(2,10^9,n*(n-1)/2)
 		char* c;  // create pointer
 
-		std::cin>>n>>k;
+		cin>>n>>k;
 
 		c=new char[n];   // allocate a block of memory to c
 		generate_permutation(n,k,c);
 
-		std::string str(c,c+n);
+		string str(c,c+n);
 
 		vec.push_back(str); // store in vector
 
@@ -90,8 +90,8 @@ int main(){
 
 	}
 
-	for (std::string s : vec){
-		std::cout<<s<<"\n";
+	for (string s : vec){
+		cout<<s<<"\n";
 	}
 
 	return 0;
