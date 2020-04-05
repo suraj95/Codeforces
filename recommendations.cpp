@@ -31,9 +31,12 @@ Output:
 0 // distibution is already unique
 
 
-Note- For the first test case, the answer is actually listed as 6, but I believe it is incorrect because
-it doesn't take into consideration the fact that other numbers will increase too when we add extra time.
-8 is the smallest possible time period we can add where we get a unique distribution.
+Note- For the first test case, the answer is actually listed as 6 as that will add 3 new publications to 
+the second publication, making its count 10. But I believe it is incorrect because it doesn't take into 
+consideration the fact that other numbers will increase too, and at t=6, the distribution becomes 
+[3,10,10,7,9]
+
+8 is the smallest possible time period we can add where we get a unique distribution of [4,11,10,8,9]
 
 */
 
