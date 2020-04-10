@@ -1,3 +1,16 @@
+/*
+The first line contains a single integer T (1≤T≤500) — the number of test cases.
+
+The first line of each test case contains a single integer n (1≤n≤100) — the number of moments of time 
+Polycarp peeked at the stats. Each of the next n lines contains two integers pi and ci (0≤pi,ci≤1000) — the number of plays and the 
+number of clears of the level at the 𝑖-th moment of time.
+
+For each test case print a single line. If there could exist such a sequence of plays (and clears, 
+respectively) that the stats were exactly as Polycarp has written down, then print "YES".
+Otherwise, print "NO".
+
+*/
+
 #define _CRT_SECURE_NO_WARNINGS
 
 #include<algorithm>
