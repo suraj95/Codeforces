@@ -30,11 +30,8 @@ int generate_max_wealthy(std::vector<double> savings, int min_wealth){
 
     sort(savings.begin(), savings.end(), greater<int>());
 
- //    for (int n : savings){
-	// 	cout<<n<<"\n";
-	// }
-
     int result=0; // initialize
+    
     int total_wealth;
     double average_wealth;
 
@@ -49,8 +46,6 @@ int generate_max_wealthy(std::vector<double> savings, int min_wealth){
 
     	int num_people=i+1;
     	average_wealth=total_wealth/num_people;
-
-    	//cout<<average_wealth<<"\n";
 
     	if(average_wealth<min_wealth){
 
@@ -67,6 +62,8 @@ int generate_max_wealthy(std::vector<double> savings, int min_wealth){
 }
 
 int main(){
+
+	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
 	int num_test_cases;
 	cin>>num_test_cases;

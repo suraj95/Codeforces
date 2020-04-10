@@ -64,6 +64,8 @@ bool validate_games(std::vector<GamePair> games){
 
 int main(){
 
+	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+
 	int num_test_cases;
 	cin>>num_test_cases;
 
