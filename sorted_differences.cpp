@@ -3,9 +3,9 @@
 You have array of n numbers a1,a2,…,an. Rearrange these numbers to satisfy |a1−a2|≤|a2−a3|≤... 
 where |x| denotes absolute value of x. It's always possible to find such rearrangement.
 
-The first line contains a single integer t (1≤t≤104) — the number of test cases.
-The first line of each test case contains single integer n (3≤n≤105) — the length of array a. It is 
-guaranteed that the sum of values of n over all test cases in the input does not exceed 105.
+The first line contains a single integer t (1≤t≤104) — the number of test cases. The first line of 
+each test case contains single integer n (3≤n≤105) — the length of array a. It is guaranteed that 
+the sum of values of n over all test cases in the input does not exceed 105.
 
 */
 
@@ -80,7 +80,17 @@ std::vector<int> sorted_differences(std::vector<int> inputs){
 	order small-big, big-small, small-big ...... or vice versa
 
 	My pairing approach is correct, but I still haven't quite fixed the issue about
-	ordering between the pairs. I'll come back here later. 
+	ordering the gaps "between" the pairs, which is probably why I am getting error
+	in the third test, which has 100000 negative numbers.
+
+	Basically, my solution is correct but it is not complete as I am solving for
+
+	|a1−a2|≤|a3−a4|≤|a5−a6|≤|a7−a8|
+
+	but not
+
+	|a1−a2|≤|a2−a3|≤|a3−a4|≤|a4−a5|
+
 */
 
 	sort(inputs.begin(), inputs.end());
