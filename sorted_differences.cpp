@@ -36,9 +36,40 @@ bool greater_num(int a, int b){
 	return a>=b;
 }
 
-std::list<int> sorted_differences(std::vector<int> inputs){
+bool adjacent_differences_check(std::vector<int> inputs){
 
-	std::list<int> result;
+	int a1, a2; 
+	int differences=-1; // initialize
+
+	for(int i=0; i<inputs.size()-1; i++){
+
+		int a1=inputs[i];
+		int a2=inputs[i+1];
+
+		if(differences==-1){
+			differences=abs(a2-a1);
+		}
+
+		else{
+
+			// check if current difference is less than previous
+			if(abs(a2-a1)<differences){
+				return false;
+			}
+			// update difference
+			else{
+				differences=abs(a2-a1);
+			}
+		}
+
+	}
+
+	return true;
+}
+
+std::vector<int> sorted_differences(std::vector<int> inputs){
+
+	std::vector<int> result;
 
 /*	
 	We solve this by generating pairs of inputs by sorting them in 
@@ -54,9 +85,14 @@ std::list<int> sorted_differences(std::vector<int> inputs){
 
 	sort(inputs.begin(), inputs.end());
 
+	// check if sorted inputs already fulfills criteria
+	if(adjacent_differences_check(inputs)){
+		return inputs;
+	}
+
 	bool flag=true;
 
-	for(int i=0; i<inputs.size()/2; i++){
+	for(int i=inputs.size()/2-1; i>=0; i--){
 
 		int big, small;
 
@@ -71,15 +107,15 @@ std::list<int> sorted_differences(std::vector<int> inputs){
 
 		// if flag is true, store bigger first
 		if(flag){
-			result.push_front(big);
-			result.push_front(small);
+			result.push_back(big);
+			result.push_back(small);
 
 			flag=false; // reset flag
 		}
 
 		else{
-			result.push_front(small);
-			result.push_front(big);
+			result.push_back(small);
+			result.push_back(big);
 
 			flag=true;
 		}
@@ -101,7 +137,7 @@ int main(){
 		cin>>n;
 
 		std::vector<int> input_vec;
-		std::list<int> output_list;
+		std::vector<int> output_vec;
 
 		for(int j=0; j<n; j++){
 			int item;
@@ -110,9 +146,9 @@ int main(){
 			input_vec.push_back(item);
 		}
 
-		output_list=sorted_differences(input_vec);
+		output_vec=sorted_differences(input_vec);
 
-		for(int num: output_list){
+		for(int num: output_vec){
 			cout<<num<<" ";
 		}
 
