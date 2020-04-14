@@ -11,7 +11,7 @@ all the candies will be given to one of two sisters (i.e. a+b=n).
 Your task is to calculate the number of ways to distribute exactly n candies between sisters in a way 
 described above. Candies are indistinguishable.
 
-Formally, find the number of ways to represent 𝑛 as the sum of n=a+b, where a and b are 
+Formally, find the number of ways to represent n as the sum of n=a+b, where a and b are 
 positive integers and a>b.
 
 */
