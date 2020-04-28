@@ -1,10 +1,13 @@
 # R Files
 
 .Rhistory
+.RData
 
-#Unused .cpp files
+#Unused .cpp files (code snippets or work in progress)
 
 divisible.cpp
+composite_coloring.cpp
+construct_string.cpp
 
 # Text Files
 

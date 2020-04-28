@@ -2,7 +2,7 @@
 
 Chain here is such a sequence of envelopes A = {a1,  a2,  ...,  an}, where the width and 
 the height of the i-th envelope is strictly higher than the width and the height of the 
-(i  -  1)-th envelope respectively. Chain size is the number of envelopes in the chain.
+(i  -  1)th envelope respectively. Chain size is the number of envelopes in the chain.
 
 We have to make the chain of the maximum size from the envelopes, such that we will be able
 to put a card into it. The card fits into the chain if its width and height is lower than the 
