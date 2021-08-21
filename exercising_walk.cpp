@@ -1,7 +1,7 @@
 /*
 
 Position of Alice is (x,y). And the cat can talk a steps left, b steps right, c steps down, 
-d steps up. So afte the walk of a+b+c+d unit moves, Alice hopes that her cat is always in the 
+d steps up. So after the walk of a+b+c+d unit moves, Alice hopes that her cat is always in the 
 area [x1,x2]×[y1,y2], i.e. for every cat's position (u,v) of a walk x1≤u≤x2 and y1≤v≤y2 holds.
 
 */
